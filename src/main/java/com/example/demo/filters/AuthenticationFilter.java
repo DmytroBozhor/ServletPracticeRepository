@@ -9,11 +9,21 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebFilter("/*")
 public class AuthenticationFilter implements Filter {
-
     private ServletContext context;
+    private static final List<String> uriList = new ArrayList<>();
+
+    static {
+        uriList.add("/demo/saveServlet");
+        uriList.add("/demo/viewByIDServlet");
+        uriList.add("/demo/deleteServlet");
+        uriList.add("/demo/putServlet");
+        uriList.add("/demo/viewServlet");
+    }
 
     public void init(FilterConfig fConfig) throws ServletException {
         this.context = fConfig.getServletContext();
@@ -31,14 +41,9 @@ public class AuthenticationFilter implements Filter {
 
         HttpSession session = req.getSession(false);
 
-        if (session == null && !(
-                uri.endsWith("demo/saveServlet") ||
-                        uri.endsWith("demo/viewByIDServlet") ||
-                        uri.endsWith("demo/loginServlet") ||
-                        uri.endsWith("demo/viewServlet"))) {
+        if (session == null && uriList.contains(uri)) {
             this.context.log("<<< Unauthorized access request");
-            PrintWriter out = res.getWriter();
-            out.println("No access!!!");
+            res.getWriter().println("No access!!!");
         } else {
             chain.doFilter(request, response);
         }

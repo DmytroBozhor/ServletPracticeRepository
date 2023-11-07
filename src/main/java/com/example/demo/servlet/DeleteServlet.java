@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.example.demo.servlet;
 
 
+import com.example.demo.repository.EmployeeRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

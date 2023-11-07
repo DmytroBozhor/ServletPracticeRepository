@@ -1,4 +1,4 @@
-package com.example.demo.session;
+package com.example.demo.servlet.session;
 
 
 import jakarta.servlet.ServletException;
@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/LogoutServlet")
+@WebServlet("/logoutServlet")
 public class LogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.repository;
 
+
+import com.example.demo.entity.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public final class EmployeeRepository {
         Connection connection = null;
         String url = "jdbc:postgresql://localhost:5432/employee";
         String user = "postgres";
-        String password = "postgres";
+        String password = "1";
 
         try {
             connection = DriverManager.getConnection(url, user, password);

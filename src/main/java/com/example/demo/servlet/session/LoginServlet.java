@@ -1,4 +1,4 @@
-package com.example.demo.session;
+package com.example.demo.servlet.session;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
